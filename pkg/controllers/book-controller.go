@@ -7,6 +7,7 @@ import (
 	"strconv"
 
 	"github.com/fikriibrahimahid/fcc-gomux-bookstore/pkg/models"
+	"github.com/fikriibrahimahid/fcc-gomux-bookstore/pkg/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -31,5 +32,14 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 	res, _ := json.Marshal(bookDetails)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader((http.StatusOK))
+	w.Write(res)
+}
+
+func CreateBook(w http.ResponseWriter, r *http.Request) {
+	CreateBook := &models.Book{}
+	utils.ParseBody(r, CreateBook)
+	b := CreateBook.CreateBook()
+	res, _ := json.Marshal(b)
+	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
