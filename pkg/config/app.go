@@ -8,10 +8,12 @@ var (
 
 func Connect() {
 	// user:password@/db_name?
-	// user     -> localhost
+	// user     -> root
 	// password ->
 	// db_name  -> fcc_bookstore_db
-	d, err := gorm.Open("mysql", "localhost:@/fcc_bookstore_db?charset=utf8&parseTime=True&loc=Local")
+	user, pwd, dbName := "root", "", "fcc_bookstore_db"
+	dbOptions := "charset=utf8&parseTime=True&loc=Local"
+	d, err := gorm.Open("mysql", user+":"+pwd+"@/"+dbName+"?"+dbOptions)
 	if err != nil {
 		panic(err)
 	}
