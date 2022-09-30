@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"github.com/fikriibrahimahid/gomux-bookstore/pkg/controllers"
 	"github.com/gorilla/mux"
 )
 
